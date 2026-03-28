@@ -3,11 +3,11 @@ import "dotenv/config";
 const { Pool } = pkg;
 
 const pool = new Pool({
-    user: process.env.USER,
-    host: process.env.HOST,
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
     database: process.env.DATABASE,
-    password: process.env.PASSWORD,
-    port: process.env.DBPORT
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT
 });
 
 pool.on("connect", () => {
