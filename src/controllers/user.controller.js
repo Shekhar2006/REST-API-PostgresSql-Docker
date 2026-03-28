@@ -15,9 +15,8 @@ export const getAllUsers = async (req, res, next) => {
 };
 
 export const getUserById = async (req, res, next) => {
-    const { id } = req.params.id;
     try {
-        const user = await getUserByIdService(id);
+        const user = await getUserByIdService(req.params.id);
         if (!user) return handleResponse(res, 404, "User not found");
         handleResponse(res, 200, "User fetched successfully", user);
     } catch (error) {
@@ -37,9 +36,8 @@ export const createUser = async (req, res, next) => {
 
 export const updateUser = async (req, res, next) => {
     const { name, email } = req.body;
-    const { id } = req.params.id;
     try {
-        const updatedUser = await updateUserService(id, name, email);
+        const updatedUser = await updateUserService(req.params.id, name, email);
         if (!updatedUser) return handleResponse(res, 404, "User not found");
         handleResponse(res, 200, "User updated successfully", updatedUser);
     } catch (error) {
@@ -48,9 +46,8 @@ export const updateUser = async (req, res, next) => {
 };
 
 export const deleteUser = async (req, res, next) => {
-    const {id} = req.params.id;
     try {
-        const deletedUser = await deleteUserService(id);
+        const deletedUser = await deleteUserService(req.params.id);
         if (!deletedUser) return handleResponse(res, 404, "User not found");
         handleResponse(res, 200, "User deleted successfully", deletedUser);
     } catch (error) {
