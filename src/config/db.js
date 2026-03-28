@@ -11,7 +11,7 @@ const pool = new Pool({
 });
 
 pool.on("connect", () => {
-    console.log("Connection pool established");
+    console.log("Database connected successfully");
 });
 
 export default pool;
